@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "66302622492",
+    "project_id": "arap-face",
+    "storage_bucket": "arap-face.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66302622492:android:c9433906d596844fc158d9",
+        "android_client_info": {
+          "package_name": "com.example.arapface"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCwrBSFYHP91TU7_2uJrmXGGZSfWqZfFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66302622492:android:a62169433a46ddd6c158d9",
+        "android_client_info": {
+          "package_name": "com.example.arapface1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCwrBSFYHP91TU7_2uJrmXGGZSfWqZfFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
