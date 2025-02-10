@@ -9,6 +9,7 @@ import 'package:arapface1/features/user/domain/entities/user_entitiy.dart';
 import 'package:arapface1/features/user/domain/usecases/edit_profile_usecase.dart';
 import 'package:arapface1/features/user/presentation/cubits/edit_cubit/edit_cubit.dart';
 import 'package:arapface1/features/user/presentation/cubits/get_user_info_cubit/get_user_info_cubit.dart';
+import 'package:arapface1/features/user/presentation/cubits/get_user_posts_cubit/get_user_posts_cubit.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -103,8 +104,8 @@ class _EditFormState extends State<EditForm> {
             height: 20,
           ),
           BlocProvider(
-            create: (context) => EditCubit(EditProfileUsecase(
-                userRepos:getIt.get<UserReposImple>())),
+            create: (context) => EditCubit(
+                EditProfileUsecase(userRepos: getIt.get<UserReposImple>())),
             child: BlocBuilder<EditCubit, EditState>(
               builder: (context, state) {
                 return CustomButton(
@@ -128,6 +129,8 @@ class _EditFormState extends State<EditForm> {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text("Edit Sucess")));
                       BlocProvider.of<GetUserInfoCubit>(context).getUserInfo();
+                      BlocProvider.of<GetUserPostsCubit>(context)
+                          .getUserPosts();
                     }
                   },
                 );

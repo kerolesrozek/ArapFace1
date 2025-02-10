@@ -92,10 +92,28 @@ class GetUserInfoRemoteDataSourceImple extends GetUserInfoRemoteDataSource {
   Future<void> editProfile(
       {required UserEntitiy userEntity, required String docId}) async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
- await   users.doc(docId).update({
+    await users.doc(docId).update({
       'userImage': userEntity.userImage,
       'userName': userEntity.userName,
       'bio': userEntity.bio,
     });
+    // تحديث صورة اليوزر في جميع البوستات
+
+    CollectionReference posts = FirebaseFirestore.instance.collection('posts');
+    QuerySnapshot querySnapshot = await posts
+        .where('userId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    List<QueryDocumentSnapshot> docs = querySnapshot.docs;
+    for (var element in docs) {
+      await element.reference.update(
+          {'userImage': userEntity.userImage, 'userName': userEntity.userName});
+    }
+
+    // تحديث صورة اليوزر في جميع الكومنتات داخل كل بوست
+
+    // QuerySnapshot queries = await posts.get();
+    // for (var element in queries.docs) {
+    //   List<dynamic> comments = element.data()['comments'] as List<dynamic>? ?? [];
+    // }
   }
 }
